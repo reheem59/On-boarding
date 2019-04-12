@@ -16,5 +16,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+// home page
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// profile picture
+Route::get('/profile/{user_id}', 'UserController@index')->name('profile')->middleware('auth');
