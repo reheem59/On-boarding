@@ -1,76 +1,6 @@
+@extends('layouts.app')
 
-
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    
-    
-    <body>
+@section('content')
     
     <div class="container">
         <div class="flex-center position-ref full-height">
@@ -79,7 +9,8 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                    <li><a  data-toggle="modal" data-target="#myModal">Login</a></li>
+                    
+                    <li style="margin-left:80%;margin-top:-2%;"><a  data-toggle="modal" data-target="#myModal" >Login</a></li>
                     
                               <!-- Modal -->
                                 <div class="modal fade" id="myModal" role="dialog" >
@@ -93,27 +24,7 @@
                                         <div class="modal-body " >
                                         <div class="input-group">
 
-                                           <!-- <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <input id="email" type="text" class="form-control" name="email" placeholder="Email">
-                                            </div>
-                                            <div class="input-group">
-                                            <br>
-                                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                            <input id="password" type="password" class="form-control" name="password" placeholder="Password">
-                                            </div>
-                                            <br>
-                                            <button type="button" class="btn btn-primary">Login</button>
-                                            <br>
-                                            <a href="#">Forgot Password?</a>
-                                            <hr>
-                                            
-                                            <p>New User?</p>
-                                            <a href="{{ route('register') }}" type="button" class="btn btn-primary">Sign up</a>
-                                        </div>
-                                        <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>-->
+                                         
                         <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
@@ -183,14 +94,7 @@
         </div>
         </div>
         </div>
-        <div class="content">
-                <div class="title m-b-md">
-                    On-Boarding
-                </div>
-
-                
-            </div>
+       
         </div>
-    </body>
-</html>
+@endsection
 

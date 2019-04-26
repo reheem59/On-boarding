@@ -50,6 +50,7 @@
               </button>
             </form>
           </ul>
+          <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                 Departments <span class="caret"></span>
                  </a>
