@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('styles')
 </head>
 <body>
     <div id="app">
@@ -55,8 +56,9 @@
                 Departments <span class="caret"></span>
                  </a>
                  <ul class="dropdown-menu">
-                 <li>
-                 </li>
+                 @foreach(\App\Department::get() as $department)
+                    <li><a href="">{{ $department->department_name }}</a></li>
+                @endforeach
                  </ul>
                  </li>
                         <li>
@@ -123,11 +125,14 @@
                 </div>
             </div>
         </nav>
-    
+
+
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+    @yield('Scripts')
 </body>
 </html>

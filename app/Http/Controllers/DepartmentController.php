@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Department;
-
+use Session;
 class DepartmentController extends Controller
 {
     
@@ -13,10 +13,9 @@ class DepartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $departments = Department::all();
-        return view('layouts.app')->with('departments', $departments);
+       return view('department.index')->with('departments',Department::all());
     }
 
     /**
@@ -26,7 +25,8 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('department.create');
     }
 
     /**
@@ -37,7 +37,20 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+
+        'department' => 'required'
+        
+            ]);
+           
+            Department::create([
+               
+                'department_name' => $request->department
+            ]);
+            
+            Session::flash('success','New department created');
+
+            return redirect()->route('departments.index');
     }
 
     /**
@@ -59,7 +72,8 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        Department::findOrFail($id);
+        return view('department.edit')->with('departments',Department::findOrFail($id));
     }
 
     /**
@@ -71,7 +85,15 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $departments = Department::findOrFail($id);
+
+        $departments->department_name = $request->department;
+
+        $departments->save();
+
+        Session::flash('success','Updated Department successfully');
         
+        return redirect()->route('departments.index');
     }
 
     /**
@@ -82,7 +104,11 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Department::destroy($id);
+
+        Session::flash('success','Deleted Department successfully');
+        
+        return redirect()->route('departments.index');
     }
 
 
