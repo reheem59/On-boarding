@@ -30,7 +30,7 @@
                     <div class="error">{{ $errors->first('email') }}</div>
                 @endif
                 <label for="password">Password:</label><a class='button3'  href="#">change</a> <br>
-                <input type="password" class="disabled3" name ='password' value= "{{$user->password}}" placeholder="password" disabled> <br>
+                <input type="password" class="disabled3" name ='password' value= "" placeholder="password" disabled> <br>
                 @if ($errors->has('password'))
                     <div class="error">{{ $errors->first('password') }}</div>
                 @endif
