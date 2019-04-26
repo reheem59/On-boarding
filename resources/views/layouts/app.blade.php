@@ -28,9 +28,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
+                
+                    <a href="{{ url('/home') }}" class="navbar-brand"><div style="color:#00ffff;display:inline;">On</div>-Board</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -43,15 +42,50 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
+                        <ul class="navbar-nav mr-1" style="margin-top:1rem">
+            <form class="form-inline my-1 ml-lg-5" action="">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" style="width:67rem">
+              <button class="btn btn-link my-2 my-sm-0" type="submit" style="margin-left:-5.5rem">
+                <i class="fa fa-search" style="color:#00ffff"></i>
+              </button>
+            </form>
+          </ul>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                Departments <span class="caret"></span>
+                 </a>
+                 </li>
+                        <li>
+                <a href="#" class="dropdown-toggle"  role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                Q&A </span>
+                 </a>
+                 </li>
 
                             <!-- <li><a href="{{ route('login') }}" >Login</a></li> -->
                             <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
                         @else
+                        <ul class="navbar-nav mr-1" style="margin-top:1rem">
+            <form class="form-inline my-1 ml-lg-5" action="">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" style="width:67rem">
+              <button class="btn btn-link my-2 my-sm-0" type="submit" style="margin-left:-5.5rem">
+                <i class="fa fa-search" style="color:#00ffff"></i>
+              </button>
+            </form>
+          </ul>
+                        <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                Departments <span class="caret"></span>
+                 </a>
+                 </li>
+                        <li>
+                <a href="#"  role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                Q&A 
+                 </a>
+                 </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                     {{ Auth::user()->user_name }} <span class="caret"></span>
                                 </a>
-
+                               
                                 <ul class="dropdown-menu">
 
                                 <li>
@@ -69,7 +103,9 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+               
                                 </ul>
+                              
                             </li>
                         @endguest
                     </ul>

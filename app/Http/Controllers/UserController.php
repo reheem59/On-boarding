@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class UserController extends Controller
 {
@@ -14,7 +15,7 @@ class UserController extends Controller
      */
     public function index($id)
     {
-        $user = User::find($id);
+        $user = User::where('user_id',Auth::user()->user_id)->findOrFail($id);
         return view('user.user_profile.view_profile')->with('user', $user);
     }
 
@@ -70,7 +71,30 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'username' => '',
+            'email' => 'email|unique:users',
+            
+        ]);
+
+
+        $user = User::where('user_id',Auth::user()->user_id)->findOrFail($id);
+if($request->username != null){
+    $user->user_name = $request->username;
+}if($request->email != null){
+    $user->email = $request->email;
+}if($request->password != null){
+    $user->password = bcrypt($request->password);
+}
+$user->save();
+    return back();
+        
+        
+        
+        
+        $user->save();
+
+        return back();
     }
 
     /**
