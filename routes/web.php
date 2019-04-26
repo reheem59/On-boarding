@@ -22,3 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 // profile
 Route::get('/profile/{user_id}', 'UserController@index')->name('profile')->middleware('auth');
 Route::post('/profile/{user_id}', 'UserController@update')->name('profile_update')->middleware('auth');
+
+
+
+

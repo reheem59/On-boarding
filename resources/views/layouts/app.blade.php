@@ -50,10 +50,14 @@
               </button>
             </form>
           </ul>
-          <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+          <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                 Departments <span class="caret"></span>
                  </a>
+                 <ul class="dropdown-menu">
+                 <li>
+                 </li>
+                 </ul>
                  </li>
                         <li>
                 <a href="#" class="dropdown-toggle"  role="button" aria-expanded="false" aria-haspopup="true" v-pre>
@@ -72,10 +76,16 @@
               </button>
             </form>
           </ul>
-                        <li>
+                <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                 Departments <span class="caret"></span>
                  </a>
+                 <ul class="dropdown-menu">
+                 @foreach(\App\Department::get() as $department)
+                    <li><a href="">{{ $department->department_name }}</a></li>
+                @endforeach
+                 </ul>
+                 
                  </li>
                         <li>
                 <a href="#"  role="button" aria-expanded="false" aria-haspopup="true" v-pre>

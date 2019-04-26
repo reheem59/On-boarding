@@ -7,7 +7,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="/">Home</a>
                     @else
                     
                     <li style="margin-left:80%;margin-top:-2%;"><a  data-toggle="modal" data-target="#myModal" >Login</a></li>
