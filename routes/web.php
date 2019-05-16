@@ -15,17 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
+
+
+Auth::routes(['verify' => true]);
 // home page
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/home', 'HomeController@index')->name('home');
 
 // profile
-Route::get('/profile/{user_id}', 'UserController@index')->name('profile')->middleware('auth');
-Route::post('/profile/{user_id}', 'UserController@update')->name('profile_update')->middleware('auth');
+Route::get('/profile/{user_id}', 'UserController@index')->name('profile')->middleware('verified');
+Route::post('/profile/{user_id}', 'UserController@update')->name('profile_update')->middleware('verified');
 
 // department
 
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => 'verified'], function(){
 
     Route::resource('departments','DepartmentController');
 
@@ -45,5 +49,7 @@ Route::get('discussion/create',[
 
 Route::get('discussion', 'DiscussionController@index');
 Route::get('discussion/{thread}', 'DiscussionController@show')->name('post');
+
+
 
 
