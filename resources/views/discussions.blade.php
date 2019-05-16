@@ -11,7 +11,7 @@
 Title
 </th>
 <th>
-User
+Author
 </th>
 <th>
 Department

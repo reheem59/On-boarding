@@ -19,21 +19,27 @@
                 <hr/>
                 <form action="{{route('profile_update',['$id' => Auth::user()->user_id])}}" method="POST">
                 {{ csrf_field() }}
+                    <div class="form-group">
                 <label for="username">User Name:</label> <a class='button1' href="#">change</a><br>
-                <input type="text" class="disabled1" name ='username' value= "{{$user->user_name}}"placeholder="username" disabled> <br>
+                <input type="text" class="disabled1 form-control" name ='username' value= "{{$user->user_name}}"placeholder="username" disabled> <br>
                 @if ($errors->has('username'))
                     <div class="error">{{ $errors->first('username') }}</div>
                 @endif
+                    </div>
+                    <div class="form-group">
                 <label for="email">Email:</label><a class='button2' href="#">change</a> <br>
-                <input type="text" class="disabled2" name ='email' value= "{{$user->email}}" placeholder="email" disabled> <br>
+                <input type="text" class="disabled2 form-control" name ='email' value= "{{$user->email}}" placeholder="email" disabled> <br>
                 @if ($errors->has('email'))
                     <div class="error">{{ $errors->first('email') }}</div>
                 @endif
+                    </div>
+                    <div class="form-group">
                 <label for="password">Password:</label><a class='button3'  href="#">change</a> <br>
-                <input type="password" class="disabled3" name ='password' value= "" placeholder="password" disabled> <br>
+                <input type="password" class="disabled3 form-control" name ='password' value= "" placeholder="password" disabled> <br>
                 @if ($errors->has('password'))
                     <div class="error">{{ $errors->first('password') }}</div>
                 @endif
+                    </div>
                 <br/>
                 <button type='submit'>Save Changes</button>
                 
