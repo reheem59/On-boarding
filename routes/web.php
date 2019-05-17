@@ -38,8 +38,6 @@ Route::group(['middleware' => 'verified'], function(){
 
 
 
-//// THREADS
-Route::get('Q&A/create', 'ThreadController@create')->name('qa.create');
 
 
 //admin
@@ -53,30 +51,42 @@ Route::get('Q&A/create', 'ThreadController@create')->name('qa.create');
     Route::delete('departments/delete/{id}','DepartmentController@destroy')->name('departments.destroy');
 
 
-    Route::get('discussion/create',[
+    Route::get('thread/create',[
         'uses' => 'ThreadController@create',
         'as' => 'thread.create'
     ]);
-    Route::post('discussion/store',[
+    Route::post('thread/store',[
         'uses' => 'ThreadController@store',
 
-    ])->name('discussion.store');
+    ])->name('thread.store');
 });
-Route::get('discussion', 'ThreadController@index')->name('thread.index');
-Route::get('discussion/{thread}', 'ThreadController@show')->name('thread.show');
+Route::get('thread', 'ThreadController@index')->name('thread.index');
+Route::get('thread/show/{id}', 'ThreadController@show')->name('thread.show');
+Route::get('/thread/fetch_data', 'ThreadController@fetch_data')->middleware('auth');
+Route::get('thread/{thread}', 'ThreadController@show')->name('thread.show');
 
 //Post per department
 
-Route::get('content/{id}/post', 'ContentController@index')->name('content');
-Route::get('content/create', 'ContentController@create');
+Route::get('content/{id}/post', 'ContentController@index')->name('content.index');
+Route::get('content/create', 'ContentController@create')->name('content.create');
+Route::get('content/show/{id}', 'ContentController@show')->name('content.show');
+
 Route::post('content/store',[
     'uses' => 'ContentController@store',
     'as' => 'content.store'
 ]);
-
+Route::get('content/list',[
+    'uses' => 'ContentController@list',
+    'as' => 'content.list'
+]);
+Route::post('content/update/{id}','ContentController@update')->name('content.update');
+Route::delete('content/delete/{id}','ContentController@destroy')->name('content.destroy');
 //admin route function
 
 Route::get('admin',function(){
 
     return view('admin.admin');
-});
+})->name('admin');
+
+
+//

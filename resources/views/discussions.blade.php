@@ -1,42 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-<h2 style="padding-left:10%;">List of post</h2>
-<div class="container">
+  <div class="panel panel-default">
 
-<table class="table table-bordered">
-<thead>
-<tr>
-<th>
-Title
-</th>
-<th>
-Author
-</th>
-<th>
-Department
-</th>
-</thead>
-</tr>
-<tbody>
+    <div class="panel-heading">Edit Content: {!! $content->title !!}</div>
 
-@foreach($threads as $thread)
-<tr>
-    <td>
-    <a href="{{route('thread.index',['post'=> $thread->thread_id])}}">{{$thread->title}}</a>
-    </td>
+    <form action="{{route('content.update',['id' => $content->content_id])}}" method="POST" >
+        {{csrf_field()}}
 
-    <td>
-    {{$thread->user_name}}
-    </td>
 
-    <td>
-    {{$thread->department_name}}
-    </td>
-</tr>
-@endforeach
-</tbody>
-</table>
+        <div class="form-group">
+
+            <input type="text" name="title" value="{!! $content->title !!}" class="form-control">
+
+            <input type="text" name="body" value="{!! $content->body !!}" class="form-control">
+
+
+
+        </div>
+        <div class="form-group">
+            <div class="text-center">
+                <button class=" btn btn-success" type="submit">
+                    Update Changes
+                </button>
+            </div>
+        </div>
+    </form>
+
+
+</div>
 </div>
 
 @endsection

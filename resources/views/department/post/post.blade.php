@@ -17,7 +17,7 @@
         </div>
         <div class="col-1"></div>
         <div class="col-3 ml-1 mr-5">
-            <img style="display:block;height:17em;width:17em" src="images/iconacademics.png" alt="OSAS icon" style="width:100%;height:auto">
+            <img style="display:block;height:17em;width:17em" src="{{$department->image}}" alt="OSAS icon" style="width:100%;height:auto">
         </div>
         <div class="col-1"></div>
     </div>

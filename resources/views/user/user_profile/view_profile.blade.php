@@ -41,7 +41,7 @@
                 @endif
                     </div>
                 <br/>
-                <button type='submit'>Save Changes</button>
+                <button type='submit' disabled>Save Changes</button>
                 
                 </form>
 
@@ -76,6 +76,11 @@ $('.button3').on('click', function() {
     
     $('.disabled3').removeAttr("disabled");
 })
+
+    $('a').on('click', function() {
+
+        $('button').removeAttr("disabled");
+    })
 });
 });
 </script>

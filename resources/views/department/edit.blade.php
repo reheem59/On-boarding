@@ -5,9 +5,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Edit Department: {{$departments->department_name}}</div>
 
-                <form action="{{route('departments.update',['department' => $departments->department_id])}} " method="POST" >
+                <form action="{{route('departments.update',['department' => $departments->department_id])}}" method="POST" enctype="multipart/form-data">
                 {{csrf_field()}}
-                {{method_field('PUT')}}
+
 
                 <div class="form-group">
 

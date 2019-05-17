@@ -53,7 +53,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Q&A.html">Q&A</a>
+                    <a class="nav-link" href="{{route('thread.index')}}">Q&A</a>
                 </li>
                 @guest
                     <li class="nav-item active">
@@ -199,7 +199,7 @@
             <div class="row">
                 <!-- Image Icon-->
                 <div class="col-lg-4">
-                    <img class="mx-auto" style="display:block;height:17em;width:17em" src="images/iconacademics.png" alt="OSAS icon" style="width:100%;height:auto">
+                    <img class="mx-auto" style="display:block;height:17em;width:17em" src="{{$department->image}}" alt="OSAS icon" style="width:100%;height:auto">
                 </div>
                 <!-- Content -->
                 <div class="col-lg-8">
@@ -210,7 +210,7 @@
                     -->
                     <p class="lead">{{$department->description}} </p>
                     <p class="lead text-right">
-                        <a class="btn btn-primary btn-lg mr-5 mt-3" href="{{route('content',['id' =>$department->department_id ])}}" role="button">Learn more</a>
+                        <a class="btn btn-primary btn-lg mr-5 mt-3" href="{{route('content.index',['id' =>$department->department_id ])}}" role="button">Learn more</a>
                     </p>
                 </div>
             </div>

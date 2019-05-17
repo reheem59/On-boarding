@@ -2,13 +2,56 @@
 
 @section('content')
 
-<div class="container">
-<h2 style="padding-left:10%;">Title: {{$threads->title}}</h2>
-{!! $threads->body !!}
 
-<h4>Author: {{$threads->user_name}}</h4>
+    <div class="panel panel-default">
+        <div class="panel-heading">Departments</div>
 
 
-</div>
+        <table class="table table-hover">
+
+            <thead>
+            <th>
+                Name
+            </th>
+            <th>
+                Edit
+            </th>
+            <th>
+                Delete
+            </th>
+            </thead>
+
+            <tbody>
+
+            @foreach($contents as $content)
+                <tr>
+                    <td>
+                        {{$content->title}}
+                    </td>
+
+                    <td>
+                        <a href="{{ route('content.show',['id' => $content->content_id])}}" class="btn btn-xs btn-primary">Edit</a>
+                    </td>
+
+                    <td>
+
+                        <form action="{{route('content.destroy',['id' => $content->content_id])}}" method="POST">
+
+                            {{csrf_field()}}
+                            {{method_field('DELETE')}}
+
+                            <button class="btn btn-xs btn-primary" type="submit">Delete</button>
+
+                        </form>
+                    </td>
+
+                </tr>
+
+            @endforeach
+            </tbody>
+        </table>
+
+    </div>
+    </div>
 
 @endsection

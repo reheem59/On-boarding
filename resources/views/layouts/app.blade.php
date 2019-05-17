@@ -50,7 +50,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Departments</a>
                     <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
                         @foreach(\App\Department::get() as $department)
-                            <a class="dropdown-item" href="{{route('content',['id' =>$department->department_id ])}}">{{ $department->department_name }}</a>
+                            <a class="dropdown-item" href="{{route('content.index',['id' =>$department->department_id ])}}">{{ $department->department_name }}</a>
 
                         @endforeach
                         <div class="dropdown-divider"></div>
@@ -58,7 +58,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Q&A.html">Q&A</a>
+                    <a class="nav-link" href="{{route('thread.index')}}">Q&A</a>
                 </li>
                 @guest
                 <li class="nav-item active">
@@ -101,7 +101,7 @@
     </div>
 </nav> <!-- End of Navbar -->
 
-
+@include('flash-message')
 <!-- Login Modal -->
 <div class="modal fade" id="myModal">
     <div class="modal-dialog mt-lg-5 mr-lg-2" role="document">

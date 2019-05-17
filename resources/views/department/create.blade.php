@@ -5,7 +5,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Create a new Department</div>
 
-                <form action="{{route('departments.store')}} " method="POST" >
+                <form action="{{route('departments.store')}} " method="POST" enctype="multipart/form-data" >
                 {{csrf_field()}}
 
                 <div class="for-group">
