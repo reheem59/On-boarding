@@ -13,6 +13,18 @@
                     <input type="text" name="department" class="form-control">
 
                 </div>
+
+                    <div class="for-group">
+
+                        <input type="file" name="image" class="form-control">
+
+                    </div>
+
+                    <div class="for-group">
+
+                        <input type="text" name="description" class="form-control">
+
+                    </div>
                 <div class="form-group">
                 <div class="text-center">
                     <button class=" btn btn-success" type="submit"> 

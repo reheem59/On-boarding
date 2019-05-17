@@ -45,7 +45,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Departments</a>
                     <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
                         @foreach(\App\Department::get() as $department)
-                            <a class="dropdown-item" href="">{{ $department->department_name }}</a>
+                            <a class="dropdown-item" href="../content/{{$department->department_id}}/post">{{ $department->department_name }}</a>
 
                         @endforeach
                         <div class="dropdown-divider"></div>
@@ -194,6 +194,7 @@
     </div> <!-- End of Jumbo Welcome -->
 
     <div class="container">
+        @foreach($departments as $department)
         <div class="jumbotron">
             <div class="row">
                 <!-- Image Icon-->
@@ -202,181 +203,20 @@
                 </div>
                 <!-- Content -->
                 <div class="col-lg-8">
-                    <h1 class="display-3">Office of Student Affairs and Services</h1>
+                    <h1 class="display-3">{{$department->department_name}}</h1>
                     <hr class="my-4">
                     <!--
                     <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
                     -->
-                    <p class="lead">Handles most student related inquiries. This Office focuses on guiding students
-                        and providing them with opportunities to help them with their school life. </p>
+                    <p class="lead">{{$department->description}} </p>
                     <p class="lead text-right">
-                        <a class="btn btn-primary btn-lg mr-5 mt-3" href="Content.html" role="button">Learn more</a>
+                        <a class="btn btn-primary btn-lg mr-5 mt-3" href="{{route('content',['id' =>$department->department_id ])}}" role="button">Learn more</a>
                     </p>
                 </div>
             </div>
-
         </div>
+        @endforeach
 
-        <div class="jumbotron">
-            <div class="row">
-                <!-- Image Icon-->
-                <div class="col-lg-4">
-                    <img class="mx-auto" style="display:block;height:17em;width:17em" src="images/iconacademics.png" alt="OSAS icon" style="width:100%;height:auto">
-                </div>
-                <!-- Content -->
-                <div class="col-lg-8">
-                    <h1 class="display-3">Office of Student Affairs and Services</h1>
-                    <hr class="my-4">
-                    <!--
-                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                    -->
-                    <p class="lead">Handles most student related inquiries. This Office focuses on guiding students
-                        and providing them with opportunities to help them with their school life. </p>
-                    <p class="lead text-right">
-                        <a class="btn btn-primary btn-lg mr-5 mt-3" href="Content.html" role="button">Learn more</a>
-                    </p>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="jumbotron">
-            <div class="row">
-                <!-- Image Icon-->
-                <div class="col-lg-4">
-                    <img class="mx-auto" style="display:block;height:17em;width:17em" src="images/iconacademics.png" alt="OSAS icon" style="width:100%;height:auto">
-                </div>
-                <!-- Content -->
-                <div class="col-lg-8">
-                    <h1 class="display-3">Office of Student Affairs and Services</h1>
-                    <hr class="my-4">
-                    <!--
-                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                    -->
-                    <p class="lead">Handles most student related inquiries. This Office focuses on guiding students
-                        and providing them with opportunities to help them with their school life. </p>
-                    <p class="lead text-right">
-                        <a class="btn btn-primary btn-lg mr-5 mt-3" href="Content.html" role="button">Learn more</a>
-                    </p>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="jumbotron">
-            <div class="row">
-                <!-- Image Icon-->
-                <div class="col-lg-4">
-                    <img class="mx-auto" style="display:block;height:17em;width:17em" src="images/iconacademics.png" alt="OSAS icon" style="width:100%;height:auto">
-                </div>
-                <!-- Content -->
-                <div class="col-lg-8">
-                    <h1 class="display-3">Office of Student Affairs and Services</h1>
-                    <hr class="my-4">
-                    <!--
-                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                    -->
-                    <p class="lead">Handles most student related inquiries. This Office focuses on guiding students
-                        and providing them with opportunities to help them with their school life. </p>
-                    <p class="lead text-right">
-                        <a class="btn btn-primary btn-lg mr-5 mt-3" href="Content.html" role="button">Learn more</a>
-                    </p>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="jumbotron">
-            <div class="row">
-                <!-- Image Icon-->
-                <div class="col-lg-4">
-                    <img class="mx-auto" style="display:block;height:17em;width:17em" src="images/iconacademics.png" alt="OSAS icon" style="width:100%;height:auto">
-                </div>
-                <!-- Content -->
-                <div class="col-lg-8">
-                    <h1 class="display-3">Office of Student Affairs and Services</h1>
-                    <hr class="my-4">
-                    <!--
-                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                    -->
-                    <p class="lead">Handles most student related inquiries. This Office focuses on guiding students
-                        and providing them with opportunities to help them with their school life. </p>
-                    <p class="lead text-right">
-                        <a class="btn btn-primary btn-lg mr-5 mt-3" href="Content.html" role="button">Learn more</a>
-                    </p>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="jumbotron">
-            <div class="row">
-                <!-- Image Icon-->
-                <div class="col-lg-4">
-                    <img class="mx-auto" style="display:block;height:17em;width:17em" src="images/iconacademics.png" alt="OSAS icon" style="width:100%;height:auto">
-                </div>
-                <!-- Content -->
-                <div class="col-lg-8">
-                    <h1 class="display-3">Office of Student Affairs and Services</h1>
-                    <hr class="my-4">
-                    <!--
-                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                    -->
-                    <p class="lead">Handles most student related inquiries. This Office focuses on guiding students
-                        and providing them with opportunities to help them with their school life. </p>
-                    <p class="lead text-right">
-                        <a class="btn btn-primary btn-lg mr-5 mt-3" href="Content.html" role="button">Learn more</a>
-                    </p>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="jumbotron">
-            <div class="row">
-                <!-- Image Icon-->
-                <div class="col-lg-4">
-                    <img class="mx-auto" style="display:block;height:17em;width:17em" src="images/iconacademics.png" alt="OSAS icon" style="width:100%;height:auto">
-                </div>
-                <!-- Content -->
-                <div class="col-lg-8">
-                    <h1 class="display-3">Office of Student Affairs and Services</h1>
-                    <hr class="my-4">
-                    <!--
-                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                    -->
-                    <p class="lead">Handles most student related inquiries. This Office focuses on guiding students
-                        and providing them with opportunities to help them with their school life. </p>
-                    <p class="lead text-right">
-                        <a class="btn btn-primary btn-lg mr-5 mt-3" href="Content.html" role="button">Learn more</a>
-                    </p>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="jumbotron">
-            <div class="row">
-                <!-- Image Icon-->
-                <div class="col-lg-4">
-                    <img class="mx-auto" style="display:block;height:17em;width:17em" src="images/iconacademics.png" alt="OSAS icon" style="width:100%;height:auto">
-                </div>
-                <!-- Content -->
-                <div class="col-lg-8">
-                    <h1 class="display-3">Office of Student Affairs and Services</h1>
-                    <hr class="my-4">
-                    <!--
-                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                    -->
-                    <p class="lead">Handles most student related inquiries. This Office focuses on guiding students
-                        and providing them with opportunities to help them with their school life. </p>
-                    <p class="lead text-right">
-                        <a class="btn btn-primary btn-lg mr-5 mt-3" href="Content.html" role="button">Learn more</a>
-                    </p>
-                </div>
-            </div>
-
-        </div>
     </div>
 
 

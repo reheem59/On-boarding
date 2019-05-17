@@ -31,25 +31,52 @@ Route::post('/profile/{user_id}', 'UserController@update')->name('profile_update
 
 Route::group(['middleware' => 'verified'], function(){
 
-    Route::resource('departments','DepartmentController');
 
     
-Route::get('discussion/create',[
-'uses' => 'DiscussionController@create',
-'as' => 'discussion.create'
-    ]);
 
+
+
+
+
+//// THREADS
+Route::get('Q&A/create', 'ThreadController@create')->name('qa.create');
+
+
+//admin
+
+    // department crud
+    Route::get('departments','DepartmentController@index')->name('departments.index');
+    Route::get('departments/create','DepartmentController@create')->name('departments.create');
+    Route::post('departments','DepartmentController@store')->name('departments.store');
+    Route::get('departments/edit/{id}','DepartmentController@edit')->name('departments.edit');
+    Route::post('departments/update/{id}','DepartmentController@update')->name('departments.update');
+    Route::delete('departments/delete/{id}','DepartmentController@destroy')->name('departments.destroy');
+
+
+    Route::get('discussion/create',[
+        'uses' => 'ThreadController@create',
+        'as' => 'thread.create'
+    ]);
     Route::post('discussion/store',[
+        'uses' => 'ThreadController@store',
 
-        'uses' => 'DiscussionController@store',
-        'as' => 'discussion.store'
-    ]);
+    ])->name('discussion.store');
+});
+Route::get('discussion', 'ThreadController@index')->name('thread.index');
+Route::get('discussion/{thread}', 'ThreadController@show')->name('thread.show');
 
-}); 
+//Post per department
 
-Route::get('discussion', 'DiscussionController@index');
-Route::get('discussion/{thread}', 'DiscussionController@show')->name('post');
+Route::get('content/{id}/post', 'ContentController@index')->name('content');
+Route::get('content/create', 'ContentController@create');
+Route::post('content/store',[
+    'uses' => 'ContentController@store',
+    'as' => 'content.store'
+]);
 
+//admin route function
 
+Route::get('admin',function(){
 
-
+    return view('admin.admin');
+});

@@ -9,9 +9,13 @@
                 {{csrf_field()}}
                 {{method_field('PUT')}}
 
-                <div class="for-group">
-                <form action="{{route('departments.destroy',['department' => $departments->department_id])}}"></form>
+                <div class="form-group">
+
                     <input type="text" name="department" value="{{$departments->department_name}}" class="form-control">
+
+                    <input type="file" name="image" value="{{$departments->image}}" class="form-control">
+
+                    <input type="text" name="description" value="{{$departments->description}}" class="form-control">
 
                 </div>
                 <div class="form-group">

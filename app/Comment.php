@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class department extends Model
+class comment extends Model
 {
-    
     protected $fillable = [
-        'department_head'
+        'rate','user_id','thread_id'
     ];
 }

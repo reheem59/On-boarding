@@ -39,13 +39,17 @@ class DepartmentController extends Controller
     {
         $this->validate($request,[
 
-        'department' => 'required'
+        'department' => 'required',
+            'image' => 'required',
+            'description' => 'required'
         
             ]);
            
             Department::create([
-               
-                'department_name' => $request->department
+
+                'department_name' => $request['department'],
+                'image' => $request['image'],
+                 'description' => $request['description']
             ]);
             
             Session::flash('success','New department created');
@@ -72,7 +76,7 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        Department::findOrFail($id);
+//        Department::findOrFail($id);
         return view('department.edit')->with('departments',Department::findOrFail($id));
     }
 
@@ -88,7 +92,8 @@ class DepartmentController extends Controller
         $departments = Department::findOrFail($id);
 
         $departments->department_name = $request->department;
-
+        $departments->image = $request->image;
+        $departments->description = $request->description;
         $departments->save();
 
         Session::flash('success','Updated Department successfully');

@@ -23,7 +23,7 @@ Department
 @foreach($threads as $thread)
 <tr>
     <td>
-    <a href="{{route('post',['post'=> $thread->thread_id])}}">{{$thread->title}}</a>
+    <a href="{{route('thread.index',['post'=> $thread->thread_id])}}">{{$thread->title}}</a>
     </td>
 
     <td>
