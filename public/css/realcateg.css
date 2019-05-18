@@ -1,0 +1,222 @@
+
+.containerAcademics {
+  position: relative;
+  width: 50%;
+  display: inline-block;
+  float: left;
+}
+.containerOsea {
+  position: relative;
+  width: 25%;
+  display: inline-block;
+  float: left;
+}
+.containerOsas {
+  position: relative;
+  width: 25%;
+  display: inline-block;
+  float: left;
+}
+
+.containerRegistrar {
+  position: relative;
+  width: 25%;
+  display: inline-block;
+  float: left;
+}
+.containerFinance {
+  position: relative;
+  width: 25%;
+  display: inline-block;
+  float: left;
+}
+.containerRulesandRegulations {
+  position: relative;
+  width: 50%;
+  display: inline-block;
+  float: left;
+}
+
+.containerFacilities {
+  position: relative;
+  width: 50%;
+  display: inline-block;
+  float: left;
+}
+.containerLibrary {
+  position: relative;
+  width: 25%;
+  display: inline-block;
+  float: left;
+}
+.containerClinic {
+  position: relative;
+  width: 25%;
+  display: inline-block;
+  float: left;
+}
+
+.overlayAcademics {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: #008CBA;
+  display: inline-block;
+
+}
+
+.overlayOsas {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: yellow;
+  display: inline-block;
+
+}
+
+.overlayOsea {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: orange;
+  display: inline-block;
+}
+
+.overlayRegistrar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: #800080;
+  display: inline-block;
+}
+
+.overlayFinance {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: green;
+  display: inline-block;
+}
+
+.overlayRulesandRegulations {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: red;
+  display: inline-block;
+}
+.overlayFacilities {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: brown;
+  display: inline-block;
+}
+.overlayLibrary {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: #0000A0;
+  display: inline-block;
+}
+.overlayClinic {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: #8AFB17;
+  display: inline-block;
+
+}
+
+
+.containerOsas:hover .overlayOsas, .containerAcademics:hover .overlayAcademics {
+  opacity: 1;
+}
+
+.containerRegistrar:hover .overlayRegistrar, .containerOsea:hover .overlayOsea {
+  opacity: 1;
+}
+
+.containerRulesandRegulations:hover .overlayRulesandRegulations,.containerFinance:hover .overlayFinance {
+  opacity: 1;
+}
+
+.containerClinic:hover .overlayClinic, .containerLibrary:hover .overlayLibrary, .containerFacilities:hover .overlayFacilities {
+  opacity: 1;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 250px;
+  float: left;
+  border:solid;
+
+}
+
+.text {
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  font-family: verdana;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
