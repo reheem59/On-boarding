@@ -29,25 +29,22 @@
                 </div>
                 <div class="form-group">
                     <label for="inputQuestionTitle"><h4 class="mt-3">Which keywords best describes your question?</h4></label>
-                    <div class="row">
-                        <div class="col-6">
-                            <select multiple="" class="form-control" name='tagSelect' id="tagSelect">
+                    <select class="tags-multiple w-100" required name="tagSelect" id="tagSelect" multiple="multiple">
+                                <option disabled></option>
                                 @foreach($tags as $tag)
                                 <option>{{$tag->tag_name}}</option>
                                 @endforeach
-                            </select>
-                        </div>
-                        <div class="col-6">
-                            <input type="text" class="form-control" name="'inputTag" id="inputTag" aria-describedby="tagHelp" placeholder="e.g. Scholarship, Rules">
-                            <p id="tagHelp" class="form-text text-muted mt-3">Not finding your keyword? You can define your own keywords here.<br />
-                                Just separate them with a comma if you have multiple tags</p>
-                        </div>
+                    </select>
+                    <div class="mt-4">
+                        <p id="tagHelp" class="form-text text-muted">Not finding your keyword? You can define your own keywords here.<br />
+                            Just separate them with a comma if you have multiple tags</p>
+                        <input type="text" class="form-control" id="inputTag" aria-describedby="tagHelp" placeholder="e.g. Scholarship, Rules">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-9"></div>
-                    <div class="col-2">
-                        <button type="submit" class="btn btn-primary px-5 py-2 mt-2">Submit</button>
+                    <div class="col-xs-7 col-sm-7 col-md-9 col-lg-9"></div>
+                    <div class="col-3">
+                        <button type="submit" class="btn btn-success px-5 py-2 mt-4">Submit</button>
                     </div>
                 </div>
             </fieldset>
@@ -56,3 +53,20 @@
 
 
 @endsection
+
+@section('Scripts')
+    <!-- Multiselect -->
+    <link href="/../css/select2.min.css" rel="stylesheet" />
+    <script src="/../js/select2.min.js"></script>
+    <!-- End of Multiselect -->
+
+    <script>
+        $(document).ready(function() {
+            $('.tags-multiple').select2({
+                //placeholder: "Select a tag"     // placing a placeholder removes the options apparently,
+                // need to figure this out (remove comment to test it)
+            });
+        });
+    </script>
+
+    @endsection

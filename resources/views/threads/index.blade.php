@@ -142,8 +142,8 @@
 
 @section('Scripts')
     <!-- Multiselect -->
-    <link href="css/select2.min.css" rel="stylesheet" />
-    <script src="js/select2.min.js"></script>
+    <link href="/../css/select2.min.css" rel="stylesheet" />
+    <script src="/../js/select2.min.js"></script>
     <!-- End of Multiselect -->
     <script>
         jQuery(document).ready(function($) {
