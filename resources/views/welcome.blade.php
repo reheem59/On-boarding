@@ -187,7 +187,7 @@
                     </div>
                 </div>
                 <div class="col-3">
-                    <a href="Q&A.html" class="btn btn-info ml-lg-5 mr-lg-0 py-3" style="margin-top:-0.5em">Visit our Q&A</a>
+                    <a href="{{route('thread.index')}}" class="btn btn-info ml-lg-5 mr-lg-0 py-3" style="margin-top:-0.5em">Visit our Q&A</a>
                 </div>
             </form>
         </div>

@@ -35,6 +35,7 @@
                         <tr>
                             <th scope="col">Question</th>
                             <th scope="col">Rating</th>
+                            <th scope="col">Answers</th>
                             <th scope="col">Author</th>
                             <th scope="col">Date Added</th>
                         </tr>
@@ -59,6 +60,7 @@
                             <tr>
                                 <th scope="col">Question</th>
                                 <th scope="col">Rating</th>
+                                <th scope="col">Answers</th>
                                 <th scope="col">Author</th>
                                 <th scope="col">Date Added</th>
                             </tr>
@@ -81,6 +83,7 @@
                         <tr>
                             <th scope="col">Question</th>
                             <th scope="col">Rating</th>
+                            <th scope="col">Answers</th>
                             <th scope="col">Author</th>
                             <th scope="col">Date Added</th>
                         </tr>
@@ -114,9 +117,10 @@
                             @endforeach
                         </select>
                     </div>
-                    <!-- Tags -->
+{{--<!-- Tags -->--}}
                     <div class="row mb-3">
-                        <select multiple="" class="form-control" id="tagSelect">
+                        <select class="tags-multiple w-100" required name="tagSelect" id="tagSelect" multiple="multiple">
+                            <option disabled></option>
                             @foreach($tags as $tag)
                             <option>{{$tag->tag_name}}</option>
                             @endforeach
@@ -129,13 +133,32 @@
             </div>
         </div>
     </div> <!-- End of Custom Search -->
+
 </div>
 <!-- End of Your Code -->
 
 @endsection
 
 
-@section('js')
+@section('Scripts')
+    <!-- Multiselect -->
+    <link href="css/select2.min.css" rel="stylesheet" />
+    <script src="js/select2.min.js"></script>
+    <!-- End of Multiselect -->
+    <script>
+        jQuery(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+        });
+
+        $(document).ready(function() {
+            $('.tags-multiple').select2({
+                // placeholder: "Select a tag"     // placing a placeholder removes the options apparently,
+                // need to figure this out (remove comment to test it)
+            });
+        });
+    </script>
     <script>
         $(document).ready(function() {
 
