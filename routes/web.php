@@ -58,10 +58,10 @@ Route::group(['middleware' => 'verified'], function(){
     Route::post('thread/store',[
         'uses' => 'ThreadController@store',
 
-    ])->name('thread.store');
+    ])->name('qa.store');
 });
 Route::get('thread', 'ThreadController@index')->name('thread.index');
-Route::get('thread/show/{id}', 'ThreadController@show')->name('thread.show');
+Route::get('thread/show/{id}', 'ThreadController@show');
 Route::get('/thread/fetch_data', 'ThreadController@fetch_data')->middleware('auth');
 Route::get('thread/{thread}', 'ThreadController@show')->name('thread.show');
 

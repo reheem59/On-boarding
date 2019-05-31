@@ -50,7 +50,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Departments</a>
                     <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
-                        @foreach(\App\Department::get() as $department)
+                        @foreach(\App\Department::where('is_deleted','0')->get() as $department)
                             <a class="dropdown-item" href="{{route('content.index',['id' =>$department->department_id ])}}">{{ $department->department_name }}</a>
 
                         @endforeach

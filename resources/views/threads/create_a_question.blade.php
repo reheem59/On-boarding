@@ -5,7 +5,7 @@
         <h1 class="display-3">Asking a question?</h1>
         <p class="lead mt-4 text-info">We'll help you format your question so that other users will be able to find and understand your question easily.</p>
         <hr class="my-4">
-        <form action="{{route('thread.store')}}" method="'post">
+        <form action="{{route('qa.store')}}" method="'post">
             {{csrf_field()}}
             <fieldset>
                 <div class="form-group">
@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <label for="selectDepartment"><h4 class="mt-3">Which department concerns your question?</h4></label>
                     <select class="custom-select" id="departmentSelect" aria-describedby="departmentHelp">
-                        @foreach(\App\Department::get() as $department)
+                        @foreach(\App\Department::where('is_deleted','0')->get() as $department)
                         <option selected="{{$department->department_id}}">{{$department->department_name}}</option>
                         @endforeach
                     </select>

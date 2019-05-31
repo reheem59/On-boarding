@@ -21,7 +21,14 @@
                             <tr>
                                 <th scope="col">Department</th>
                                 <th scope="col" class="text-center">Posts</th>
-                                <th scope="col"></th>
+                                <th scope="col">
+
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-info ml-2" data-toggle="modal" data-target="#createDepartment">
+                                            Create Department
+                                        </button>
+                                    </div>
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -580,4 +587,43 @@
 
         });
     </script>
+
+<!-- Department Modal -->
+<div class="modal fade" id="createDepartment">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create Department</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form>
+                <form>
+                    <div class="modal-body">
+                        <form action="{{route('departments.store')}} " method="POST" enctype="multipart/form-data" >
+                            {{csrf_field()}}
+                        <div class="form-group">
+                            <label for="inputDepartment"><h5>Department Name</h4></label>
+                            <input type="text" name="department" class="form-control" id="inputDepartment" aria-describedby="tagHelp" placeholder="Enter Department">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputImage"><h5>Department Name</h4></label>
+                            <input type="file" name="image" class="form-control" id="inputImage" aria-describedby="tagHelp" >
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDescription"><h5 class="mt-3">Department Description</h4></label>
+                            <textarea class="form-control" name="description" id="inputDescription" aria-describedby="questionHelp" placeholder="Enter Description" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div> <!-- End of Department Modal -->
     @endsection

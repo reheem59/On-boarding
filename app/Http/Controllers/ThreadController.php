@@ -38,7 +38,7 @@ $threads = DB::table('users')
 //            ->withCount('comments.thread_id')
             ->orderBy('comments.thread_id','asc')
             ->paginate(10);
-            $departments = Department::all();
+            $departments = Department::where('is_deleted','0')->get();
             $tags = Tag::all();
 
         return view('threads.index',compact('threads','departments','tags','threads2','threads3'));
@@ -101,7 +101,7 @@ $threads = DB::table('users')
         return view('threads.create_a_question',compact('tags'));
     }
     public function store(Request $request){
-//dd($request);
+dd($request);
         $threads = new Thread;
 
         if ($request->inputTag !== null) {
@@ -129,7 +129,8 @@ $threads = DB::table('users')
 
         $threads = Thread::join('users','users.user_id','=','threads.user_id')
             ->join('departments','departments.department_id','=','threads.department_id')
-            ->where('thread_id',$id)
+            ->where('threads.thread_id',$id)->
+            where('departments.is_deleted','0')
             ->first();
 
         return view('show')->with('threads' , $threads);

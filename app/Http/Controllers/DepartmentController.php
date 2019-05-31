@@ -108,7 +108,7 @@ class DepartmentController extends Controller
     public function edit($id)
     {
 //        Department::findOrFail($id);
-        return view('department.edit')->with('departments',Department::findOrFail($id));
+        return view('department.edit')->with('departments',Department::where('is_deleted','0')->findOrFail($id));
     }
 
     /**
