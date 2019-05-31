@@ -49,7 +49,7 @@
 
                         @endforeach
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="Content.html">Student Handbook</a>
+                        <a class="dropdown-item" href="{{ asset('pdf/iAcademy Student Handbook.pdf') }}">Student Handbook</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -164,7 +164,7 @@
 
         @endguest
         @auth
-            <div  class="col"><a href="{{route('profile',['user_id' => Auth::user()->user_id])}}"  style="color:white;" >
+            <div  class="col"><a class=" btn btn-success" href="{{route('profile',['user_id' => Auth::user()->user_id])}}"  style="color:white;" >
                     {{ Auth::user()->user_name }}</a></div>
 
     @endauth
@@ -225,7 +225,7 @@
 
 <!-- Footer (fixed height) -->
 <div id="footer" class="mt-lg-5" style="background-color:#2C3E50;clear:both;position: bottom relative;height:10em;font-color:white;">
-
+    <h6 align="center" style='color:white'> © On-Boarding 2019</h6>
 </div>
 
 <script>

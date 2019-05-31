@@ -9,15 +9,11 @@
             {{csrf_field()}}
             <fieldset>
                 <div class="form-group">
-                    <label for="Title"><h4 class="mt-3">Title</h4></label>
+                    <label for="Title"><h4 class="mt-3">What is your question title?</h4></label>
                     <textarea class="form-control" id="Title" name="'title" aria-describedby="questionHelp" placeholder="Enter Title" rows="3"></textarea>
                     <p id="questionHelp" class="form-text text-muted mt-3">Use proper grammar and spelling so that other users can understand your question easily, and please keep it as short as possible.</p>
                 </div>
-                <div class="form-group">
-                    <label for="body"><h4 class="mt-3">Body</h4></label>
-                    <textarea class="form-control" id="body" name="'body" aria-describedby="questionHelp" placeholder="Enter Question" rows="3"></textarea>
-                    <p id="questionHelp" class="form-text text-muted mt-3">Use proper grammar and spelling so that other users can understand your question easily, and please keep it as short as possible.</p>
-                </div>
+
                 <div class="form-group">
                     <label for="selectDepartment"><h4 class="mt-3">Which department concerns your question?</h4></label>
                     <select class="custom-select" id="departmentSelect" aria-describedby="departmentHelp">

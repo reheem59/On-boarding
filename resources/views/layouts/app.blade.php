@@ -55,7 +55,7 @@
 
                         @endforeach
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="Content.html">Student Handbook</a>
+                        <a class="dropdown-item" href="{{ asset('pdf/iAcademyStudentHandbook.pdf') }}">Student Handbook</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -165,7 +165,7 @@
 
 <!-- Footer (fixed height) -->
 <div id="footer" class="mt-lg-5" style="background-color:#2C3E50;clear:both;position: bottom relative;height:10em;font-color:white;">
-
+    <h6 align="center" style='color:white'> © On-Boarding 2019</h6>
 </div>
 
 <!-- Scripts -->

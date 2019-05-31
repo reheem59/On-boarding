@@ -48,7 +48,7 @@ Route::group(['middleware' => 'verified'], function(){
     Route::post('departments','DepartmentController@store')->name('departments.store');
     Route::get('departments/edit/{id}','DepartmentController@edit')->name('departments.edit');
     Route::post('departments/update/{id}','DepartmentController@update')->name('departments.update');
-    Route::delete('departments/delete/{id}','DepartmentController@destroy')->name('departments.destroy');
+    Route::post('departments/delete/{id}','DepartmentController@destroy')->name('departments.destroy');
 
 
     Route::get('thread/create',[
@@ -83,10 +83,7 @@ Route::post('content/update/{id}','ContentController@update')->name('content.upd
 Route::delete('content/delete/{id}','ContentController@destroy')->name('content.destroy');
 //admin route function
 
-Route::get('admin',function(){
-
-    return view('admin.admin');
-})->name('admin');
+Route::get('admin','DepartmentController@index')->name('admin');
 
 
 //

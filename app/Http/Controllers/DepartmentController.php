@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+//use Illuminate\Http\Response;
+
 use App\Department;
 use Session;
+use App\User;
 use App\Traits\UploadTrait;
 class DepartmentController extends Controller
 {
@@ -17,7 +20,14 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-       return view('department.index')->with('departments',Department::all());
+
+        $departments = Department::
+            where('is_deleted','0')
+            ->paginate(10);
+        $users = User::
+            where('is_deleted','0')
+            ->paginate(10);
+       return view('admin.admin')->with('departments',$departments)->with('users',$users);
     }
 
     /**
@@ -143,11 +153,16 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        Department::destroy($id);
+        $department = Department::find($id);
 
-        Session::flash('success','Deleted Department successfully');
-        
-        return redirect()->route('departments.index')->with('success','Department deleted successfully!');;
+        $department->is_deleted = 1;
+
+        $department->save();
+//        return response()->json([
+//            'success' => 'Record deleted successfully!'
+//        ]);
+        Session::flash('success','Updated Department successfully');
+        return redirect()->view('admin.admin')->with('success','Department deleted successfully!');
     }
 
 

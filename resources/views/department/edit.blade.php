@@ -10,12 +10,18 @@
 
 
                 <div class="form-group">
+                    <div class="form-group">
+                    <input class="form-control" aria-describedby="questionHelp" type="text" name="department" value="{{$departments->department_name}}" class="form-control">
+                    </div>
 
-                    <input type="text" name="department" value="{{$departments->department_name}}" class="form-control">
+                    <div class="form-group">
+                    <input class="form-control" aria-describedby="questionHelp" type="file" name="image" value="{{$departments->image}}" class="form-control" id="profile-img">
+                    <img src="{{$departments->image}}" id="profile-img-tag" width="200px" />
+                    </div>
 
-                    <input type="file" name="image" value="{{$departments->image}}" class="form-control">
-
-                    <input type="text" name="description" value="{{$departments->description}}" class="form-control">
+                    <div class="form-group">
+                    <input class="form-control" aria-describedby="questionHelp" type="text" name="description" value="{{$departments->description}}" class="form-control">
+                    </div>
 
                 </div>
                 <div class="form-group">
@@ -32,3 +38,22 @@
             </div>
        
 @endsection
+
+@section('Scripts')
+
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#profile-img-tag').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#profile-img").change(function(){
+            readURL(this);
+        });
+    </script>
+    @endsection
