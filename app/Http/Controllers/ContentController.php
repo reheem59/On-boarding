@@ -12,14 +12,14 @@ class ContentController extends Controller
 {
     public function index($id)
     {
-        $department = Department::where('department_id',$id)->first();
+        $department = Department::where('is_deleted','0')->where('department_id',$id)->first();
         $contents = Content::where('department_id',$department->department_id)->paginate(5);
         return view('department.post.post',compact('department','contents'));
     }
 
     public function create(){
-
-        return view('department.post.content');
+        $departments = Department::where('is_deleted','0')->get();
+        return view('department.post.content',compact('departments'));
     }
     public function store(Request $request){
 
@@ -43,11 +43,15 @@ class ContentController extends Controller
 
         return view('discussions')->with('content' , $content);
     }
-    public function list()
-    {
+    public function list($id)
+    {$department = Department::where('is_deleted','0')->where('department_id',$id)->first();
+        $contents = Department::join('contents','contents.department_id','=','departments.department_id')
+            ->where('departments.department_id',$id)
+            ->get();
+//        $contents = Content::where('department_id',)->all();
+//        dd($contents);
 
-        $contents = Content::all();
-        return view('post',compact('contents'));
+        return view('post',compact('contents','department'));
     }
 
     public function update(Request $request, $id)
@@ -57,11 +61,12 @@ class ContentController extends Controller
         $content->title = $request->title;
 
         $content->body = $request->body;
+//        dd($request);
         $content->save();
 
 
 
-        return redirect()->route('departments.index')->with('success','Content updated successfully!');
+        return redirect()->back()->with('success','Content updated successfully!');
     }
 
     /**
@@ -78,4 +83,6 @@ class ContentController extends Controller
 
         return redirect()->route('admin')->with('success','Content deleted successfully!');
     }
+
+
 }

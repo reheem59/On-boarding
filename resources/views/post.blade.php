@@ -3,10 +3,10 @@
 @section('content')
 
 
-    <div class="panel panel-default">
-        <div class="panel-heading">Departments</div>
+    <div class="jumbotron">
+        <div class="panel-heading"><h1>Department Posts {{$department->department_name}}</h1></div>
 
-
+        <a class="btn btn-info" href="{{route('content.create')}}"><h4>Create a Post</h4></a>
         <table class="table table-hover">
 
             <thead>
@@ -23,6 +23,7 @@
 
             <tbody>
 
+            @if(!$contents->isEmpty())
             @foreach($contents as $content)
                 <tr>
                     <td>
@@ -30,7 +31,7 @@
                     </td>
 
                     <td>
-                        <a href="{{ route('content.show',['id' => $content->content_id])}}" class="btn btn-xs btn-primary">Edit</a>
+                        <a href="{{ route('content.show',['id' => $content->content_id])}}" class="btn btn-info">Edit</a>
                     </td>
 
                     <td>
@@ -40,7 +41,7 @@
                             {{csrf_field()}}
                             {{method_field('DELETE')}}
 
-                            <button class="btn btn-xs btn-primary" type="submit">Delete</button>
+                            <button class="btn btn-danger" type="submit">Delete</button>
 
                         </form>
                     </td>
@@ -48,6 +49,14 @@
                 </tr>
 
             @endforeach
+                @else
+            <tr>
+
+                <td colspan="3" align="center">
+                    No Records
+                </td>
+            </tr>
+            @endif
             </tbody>
         </table>
 

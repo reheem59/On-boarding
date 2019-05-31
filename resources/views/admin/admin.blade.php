@@ -34,8 +34,8 @@
                             <tbody>
                             @foreach($departments as $department)
                             <tr class="table-light clickable-row"  >
-                                <th scope="row"><a href="{{route('content.list')}}">{{$department->department_name}}</a></th>
-                                <td class="text-center">5</td>
+                                <th scope="row"><a href="{{route('content.list',['id' => $department->department_id])}}">{{$department->department_name}}</a></th>
+                                <td class="text-center"></td>
 
                                 <td class="text-center">
 
@@ -460,6 +460,9 @@
                             <a class="nav-link active" data-toggle="tab" href="#users">Users</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#moderators">Moderators</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#searchUser">Search User</a>
                         </li>
                     </ul>
@@ -478,45 +481,60 @@
                                     <tbody>
                                     @foreach($users as $user)
                                     <tr class="table-light clickable-row" data-href="#">
-                                        <th scope="row" href="Thread.html">Earnest</th>
-                                        <td>ernestgilfernandez@gmail.com</td>
-                                        <td class="text-center"><button type="button" class="btn btn-info">Edit</button> <button type="button" class="btn btn-danger ml-2">Delete</button></td>
+                                        <th scope="row" href="Thread.html">{{$user->user_name}}</th>
+                                        <td>{{$user->email}}</td>
+
+                                        <td class="text-center"><button  class="btn btn-danger ml-2 deleteUser" data-id="{{ $user->user_id }}" >Delete</button></td>
                                     </tr>
-                                   @endforeach
+                                    @endforeach
+
                                     </tbody>
                                 </table>
-                                <div class="mx-auto">
-                                    <ul class="pagination">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#">&laquo;</a>
-                                        </li>
-                                        <li class="page-item active">
-                                            <a class="page-link" href="#">1</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">2</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">3</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">4</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">5</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">&raquo;</a>
-                                        </li>
-                                    </ul>
-                                </div>
+
                             </div>
-                        </div> <!-- End of Most Discussed -->
-                        <div class="tab-pane fade active show" id="searchUser">
+                        </div> <!-- End of Users -->
+                        <!-- Moderators -->
+                        <div class="tab-pane fade" id="moderators">
+                            <div class="card border-light">
+                                <table class="table table-hover">
+                                    <thead>
+
+                                    <tr>
+                                        <th scope="col">Username</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col"></th>
+                                    </tr>
+
+                                    </thead>
+                                    <tbody>
+                                    @if(!$admin->isEmpty())
+                                    @foreach($admin as $ad)
+                                    <tr class="table-light clickable-row" data-href="#">
+                                        <th scope="row" href="Thread.html">{{$ad->user_name}}</th>
+                                        <td>{{$ad->email}}</td>
+                                        <td class="text-center"><button  class="btn btn-danger ml-2 deleteUser" data-id="{{ $ad->user_id }}" >Delete</button></td>
+                                    </tr>
+                                    @endforeach
+                                        @else
+                                    <tr>
+                                        <td colspan="3" align="center">
+                                            No Record
+                                        </td>
+                                    </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <button type="button" class="btn btn-info mx-auto px-5 py-2 mt-5">Add Moderator</button>
+                            </div>
+                        </div> <!-- End of Moderators -->
+                        <!-- Search User -->
+                        <div class="tab-pane fade" id="searchUser">
                             <!-- Search Bar -->
                             <form class="form-inline my-2 my-lg-0">
                                 <div class="input-group ml-4 mt-4">
-                                    <input class="form-control" type="text" placeholder="Search" style="width:30em">
+                                    <input class="form-control"  id="search" type="text" placeholder="Search" style="width:30em">
                                     <div class="input-group-append">
                       <span class="input-group-text" id="">
                         <button class="btn btn-default" type="submit" style="margin:-1em">
@@ -526,7 +544,7 @@
                                     </div>
                                 </div>
                             </form> <!-- End of Search Bar -->
-                            <h4 class="ml-4 mt-4 mb-4">Results for <p class="d-inline text-success">"Earnest"</p></h4>
+                            <h4 class="ml-4 mt-4 mb-4">Results </h4>
                             <div class="card border-light">
                                 <table class="table table-hover">
                                     <thead>
@@ -536,16 +554,26 @@
                                         <th scope="col"></th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="tbodyuser">
+                                    @if(!$users->isEmpty())
+                                    @foreach($users as $user)
                                     <tr class="table-light clickable-row" data-href="#">
-                                        <th scope="row" href="Thread.html">Earnest</th>
-                                        <td>ernestgilfernandez@gmail.com</td>
-                                        <td class="text-center"><button type="button" class="btn btn-info">Edit</button> <button type="button" class="btn btn-danger ml-2">Delete</button></td>
+                                        <th scope="row" href="Thread.html">{{$user->user_name}}</th>
+                                        <td>{{$user->email}}</td>
+                                        <td class="text-center"><button  class="btn btn-danger ml-2 deleteUser" data-id="{{ $user->user_id }}" >Delete</button></td>
                                     </tr>
+                                        @endforeach
+                                        @else
+                                    <tr>
+                                        <td colspan="3" align="center">
+                                            No records
+                                        </td>
+                                    </tr>
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                        </div> <!-- End of Search User -->
                     </div>
                 </div>
             </div>
@@ -588,6 +616,58 @@
         });
     </script>
 
+<script>
+
+   $(".deleteUser").click(function(){
+       var id = $(this).data("id");
+       var token = $("meta[name='csrf-token']").attr("content");
+
+       $.ajax(
+           {
+               url: "user/delete/"+id,
+               type: 'POST',
+               data: {
+                   "id": id,
+                   "_token": token,
+               },
+               success: function (){
+                   console.log("it Works");
+               }
+           });
+       location.reload();
+
+   });
+</script>
+
+<script>
+    $(document).ready(function() {
+        // $('#search').change(function(){
+        function fetch_data(query = '') {
+            $.ajax({
+                url: '/user/search',
+                method: 'GET',
+                data: {
+                    query: query
+                },
+                dataType: 'html',
+                success: function(data) {
+                    console.log(data);
+                    //alert(data);
+                    $('.tbodyuser').html(data);
+                    //alert('success');
+                }
+            })
+        }
+
+
+
+        $(document).on('keyup', '#search', function() {
+            let query = $(this).val();
+            fetch_data(query);
+        });
+    })
+</script>
+
 <!-- Department Modal -->
 <div class="modal fade" id="createDepartment">
     <div class="modal-dialog" role="document">
@@ -598,21 +678,21 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form>
-                <form>
+            <form action="{{route('departments.store')}} " method="POST" enctype="multipart/form-data" >
+                {{csrf_field()}}
+                <fieldset>
                     <div class="modal-body">
-                        <form action="{{route('departments.store')}} " method="POST" enctype="multipart/form-data" >
-                            {{csrf_field()}}
+
                         <div class="form-group">
-                            <label for="inputDepartment"><h5>Department Name</h4></label>
+                            <label for="inputDepartment"><h4>Department Name</h4></label>
                             <input type="text" name="department" class="form-control" id="inputDepartment" aria-describedby="tagHelp" placeholder="Enter Department">
                         </div>
                         <div class="form-group">
-                            <label for="inputImage"><h5>Department Name</h4></label>
+                            <label for="inputImage"><h4>Department Name</h4></label>
                             <input type="file" name="image" class="form-control" id="inputImage" aria-describedby="tagHelp" >
                         </div>
                         <div class="form-group">
-                            <label for="inputDescription"><h5 class="mt-3">Department Description</h4></label>
+                            <label for="inputDescription"><h4 class="mt-3">Department Description</h4></label>
                             <textarea class="form-control" name="description" id="inputDescription" aria-describedby="questionHelp" placeholder="Enter Description" rows="3"></textarea>
                         </div>
                     </div>
@@ -620,7 +700,7 @@
                         <button type="submit" class="btn btn-success">Save changes</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     </div>
-                </form>
+
                 </fieldset>
             </form>
         </div>

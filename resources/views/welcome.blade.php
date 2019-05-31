@@ -19,7 +19,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="navbar" style="transition:top 0.3s;top:-5rem;z-index:4">
     <div class="container">
-        <a class="navbar-brand" href="index.html"><div style="color:#18bc9c; display:inline;">On</div>-Board</a>
+        <a class="navbar-brand" href="/"><div style="color:#18bc9c; display:inline;">On</div>-Board</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             Menu&nbsp;<span class="navbar-toggler-icon"></span>
         </button>
@@ -27,15 +27,17 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
 
             <!-- Search Bar -->
-            <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0" action="{{route('departments.search')}} " method="get">
                 <div class="input-group mr-auto">
-                    <input class="form-control" type="text" placeholder="Search" style="width:30em">
+
+                    <input class="form-control" name="search" type="text" placeholder="Search" style="width:30em">
                     <div class="input-group-append">
               <span class="input-group-text" id="">
                 <button class="btn btn-default" type="submit" style="margin:-1em">
                   <i class="fa fa-search" style="color:#18bc9c;"></i>
                 </button>
               </span>
+
                     </div>
                 </div>
             </form> <!-- End of Search Bar -->
@@ -175,10 +177,10 @@
                 Facts and FAQs about the different Departments in iACADEMY
             </p>
 
-            <form class="form-group ml-2 mt-4 row">
+            <form class="form-group ml-2 mt-4 row" action="{{route('departments.search')}} " method="get">
                 <div class="col-9">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search" id="inputDefault">
+                        <input type="text" name="search" class="form-control" placeholder="Search" id="inputDefault">
                         <div class="input-group-append">
                 <span class="input-group-text" id=""><button class="btn btn-default" type="submit" style="margin:-1em">
                   <i class="fa fa-search" style="color:#18bc9c;"></i>

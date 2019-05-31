@@ -31,8 +31,11 @@ Route::post('/profile/{user_id}', 'UserController@update')->name('profile_update
 
 Route::group(['middleware' => 'verified'], function(){
 
+//delete user
+Route::post('user/delete/{id}','UserController@destroy')->name('user.destroy');
 
-    
+//search user
+Route::get('user/search','UserController@search')->name('user.search');
 
 
 
@@ -43,6 +46,7 @@ Route::group(['middleware' => 'verified'], function(){
 //admin
 
     // department crud
+    Route::get('departments/search','DepartmentController@search')->name('departments.search');
     Route::get('departments','DepartmentController@index')->name('departments.index');
     Route::get('departments/create','DepartmentController@create')->name('departments.create');
     Route::post('departments','DepartmentController@store')->name('departments.store');
@@ -75,7 +79,7 @@ Route::post('content/store',[
     'uses' => 'ContentController@store',
     'as' => 'content.store'
 ]);
-Route::get('content/list',[
+Route::get('content/list/{id}',[
     'uses' => 'ContentController@list',
     'as' => 'content.list'
 ]);

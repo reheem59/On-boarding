@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\content;
 use Illuminate\Http\Request;
 //use Illuminate\Http\Response;
 
@@ -9,6 +10,9 @@ use App\Department;
 use Session;
 use App\User;
 use App\Traits\UploadTrait;
+use DB;
+
+
 class DepartmentController extends Controller
 {
     use UploadTrait;
@@ -21,14 +25,29 @@ class DepartmentController extends Controller
     public function index()
     {
 
+//        $content = Department::join('contents','contents.department_id','=','departments.department_id')
+////            ->where('contents.department_id',$id)
+//            ->count();
         $departments = Department::
+
             where('is_deleted','0')
             ->paginate(10);
         $users = User::
             where('is_deleted','0')
+//            ->where('is_admin','0')
             ->paginate(10);
-       return view('admin.admin')->with('departments',$departments)->with('users',$users);
+        $admin = User::
+        where('is_deleted','0')
+            ->where('is_admin','1')
+            ->paginate(10);
+       return view('admin.admin')->with('departments',$departments)
+           ->with('users',$users)->with('admin',$admin);
     }
+//    public function post($id){
+//
+//        $departments = Department::$manyMethods
+//        return
+//    }
 
     /**
      * Show the form for creating a new resource.
@@ -163,6 +182,33 @@ class DepartmentController extends Controller
 //        ]);
         Session::flash('success','Updated Department successfully');
         return redirect()->view('admin.admin')->with('success','Department deleted successfully!');
+    }
+
+
+    public function search(Request $request){
+
+        $search = $request->search;
+        $post = DB::table('departments')
+            ->join('contents','contents.department_id','=','departments.department_id')
+//            ->where(function($query2) use ($search){
+//                $query2->
+
+//            ->where('department_name', 'like', '%' .$search.'%')
+//            ->where('is_deleted', '0')
+//            ->paginate(10)->setpath('');
+                ->where('department_name', 'like', '%' .$search.'%')
+                    ->orWhere('description', 'like', '%' .$search.'%')
+                    ->orWhere('title', 'like', '%' .$search.'%')
+                    ->orWhere('body', 'like', '%' .$search.'%')
+//            })
+->get();
+//        if( !count($post)){
+//            return Response('<tr>
+//                            <td align="center" colspan="3"> NO Records </td>
+//                            </tr>');
+//        }
+//dd($post);
+        return view('search')->with('post',$post);
     }
 
 

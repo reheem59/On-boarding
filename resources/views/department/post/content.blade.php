@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="panle panel-defualt">
+    <div class="jumbotron">
         <div class="panel-heading tex-center">
 
-            Create a new Content
+            <h1> Create a new Content </h1>
         </div>
 
         <div class="panel-body">
@@ -12,10 +12,10 @@
                 {{csrf_field()}}
 
                 <div class="">
-                    <label for="title">Title</label>
+                    <label for="title"><h4>Title</h4></label>
                     <input type="text" name=title class="form-control">
                     <br/>
-                    <label for="department">Pick a Department</label>
+                    <label for="department"><h4>Pick a Department</h4></label>
                     <br>
 
                     <select name="department_id" id="department_id" class="form-control">
@@ -30,7 +30,7 @@
                 <br>
 
                 <div class="form-group">
-                    <label for="content">Create a new post</label>
+                    <label for="content"><h4>Create a new post</h4></label>
                     <textarea name="content" id="content" cols="30" rows="10" ></textarea>
                 </div>
                 <br>

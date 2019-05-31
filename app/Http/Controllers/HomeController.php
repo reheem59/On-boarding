@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $departments = Department::all();
+        $departments = Department::where('is_deleted','0')->get();
         return view('welcome',compact('departments'));
     }
 }

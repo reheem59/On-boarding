@@ -96,7 +96,7 @@ $threads = DB::table('users')
 
     public function create(){
         $tags = Tag::all();
-        $departments = Department::all();
+        $departments = Department::where('is_deleted','0')->get();
 
         return view('threads.create_a_question',compact('tags'));
     }

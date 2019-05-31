@@ -33,9 +33,9 @@
 
 
             <!-- Search Bar -->
-            <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0" action="{{route('departments.search')}} " method="get">
                 <div class="input-group mr-auto">
-                    <input class="form-control" type="text" placeholder="Search" style="width:30em">
+                    <input class="form-control" name="search" type="text" placeholder="Search" style="width:30em">
                     <div class="input-group-append">
               <span class="input-group-text" id="">
                 <button class="btn btn-default" type="submit" style="margin:-1em">
