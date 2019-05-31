@@ -5,7 +5,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">Edit Department: {{$threads->title}}</div>
 
-        <form action="{{route('thread.update',['id' => $threads->thread_id])}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('thread.store',['id' => $threads->thread_id])}}" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
 
 

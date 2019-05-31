@@ -36,7 +36,7 @@ $threads = DB::table('users')
             ->join('comments','comments.user_id','=','users.user_id')
             ->join('threads','threads.user_id','=','users.user_id')
 //            ->withCount('comments.thread_id')
-            ->orderBy('comments.thread_id','asc')
+            ->orderBy('comments.thread_id','desc')
             ->paginate(10);
             $departments = Department::where('is_deleted','0')->get();
             $tags = Tag::all();
@@ -44,54 +44,7 @@ $threads = DB::table('users')
         return view('threads.index',compact('threads','departments','tags','threads2','threads3'));
     }
 
-    function fetch_data(Request $request)
-    {
-        if(Gate::allows('isStudent') ){
-            abort(403);}
 
-        try{
-
-            if ($request->ajax()) {
-                $sort_by = $request->get('sortby');
-                $sort_type = $request->get('sorttype');
-                $query = $request->get('query');
-                $list_by = $request->get('list_by');
-
-                $query = str_replace(" ", "%", $query);
-
-                $threads = DB::table('users')->join('comments','comments.user_id','=','users.user_id')
-                    ->join('threads','threads.user_id','=','users.user_id')
-                    ->where(function($query4) use ($list_by) {
-
-                        $query4->where('tag_name', 'like', '%' . $list_by . '%');
-                    })
-
-
-                    ->where(function($query2) use ($query){
-
-                        $query2->where('department_name', 'like', '%' . $query . '%')
-                           ;
-                    })
-
-                    ->orderBy($sort_by, $sort_type)
-                    ->paginate(10);
-
-                if (!count($threads)) {
-                    return Response('<tr>
-                                <td align="center" colspan="9"> No Records Found </td>
-                                </tr>');
-                }
-            }} catch (\Illuminate\Database\QueryException $e) {
-            // something went wrong with the transaction, rollback
-            DB::rollback();
-        } catch (\Exception $e) {
-            // something went wrong elsewhere, handle gracefully
-            DB::rollback();
-            abort(403);
-        }
-
-        return view('threads.tableajax', compact('threads'))->render();
-    }
     
 
     public function create(){
@@ -134,5 +87,33 @@ dd($request);
             ->first();
 
         return view('show')->with('threads' , $threads);
+    }
+
+    public function indexAdmin(){
+
+        $threads = DB::table('users')
+            ->join('comments','comments.user_id','=','users.user_id')
+            ->join('threads','threads.user_id','=','users.user_id')
+            ->orderBy('threads.rate','desc')
+            ->paginate(10);
+//            dd($threads);
+
+        $threads2 = DB::table('users')
+            ->join('comments','comments.user_id','=','users.user_id')
+            ->join('threads','threads.user_id','=','users.user_id')
+            ->orderBy('threads.created_at','desc')
+            ->paginate(10);
+
+
+        $threads3 = DB::table('users')
+            ->join('comments','comments.user_id','=','users.user_id')
+            ->join('threads','threads.user_id','=','users.user_id')
+//            ->withCount('comments.thread_id')
+            ->orderBy('comments.thread_id','desc')
+            ->paginate(10);
+        $departments = Department::where('is_deleted','0')->get();
+        $tags = Tag::all();
+
+        return view('threads.index',compact('threads','departments','tags','threads2','threads3'));
     }
 }

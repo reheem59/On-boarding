@@ -42,7 +42,15 @@
                         </thead>
                         <tbody>
 
-                        @include('threads.tableajax')
+                        @foreach($threads as $thread)
+                            <tr class="table-light clickable-row" data-href="Thread.html">
+                                <th scope="row" href="Thread.html">{{$thread->title}}</th>
+                                <td>{{$thread->rate}}</td>
+                                <td>8</td>
+                                <td>{{$thread->user_name}}</td>
+                                <td>{{$thread->created_at}}</td>
+                            </tr>
+                        @endforeach
 
                         </tbody>
                     </table>
@@ -66,7 +74,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @include('threads.tableajax')
+                            @foreach($threads2 as $thread)
+                                <tr class="table-light clickable-row" data-href="Thread.html">
+                                    <th scope="row" href="Thread.html">{{$thread->title}}</th>
+                                    <td>{{$thread->rate}}</td>
+                                    <td>8</td>
+                                    <td>{{$thread->user_name}}</td>
+                                    <td>{{$thread->created_at}}</td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                         <div class="mx-auto">
@@ -89,7 +105,15 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @include('threads.tableajax')
+                        @foreach($threads3 as $thread)
+                            <tr class="table-light clickable-row" data-href="Thread.html">
+                                <th scope="row" href="Thread.html">{{$thread->title}}</th>
+                                <td>{{$thread->rate}}</td>
+                                <td>8</td>
+                                <td>{{$thread->user_name}}</td>
+                                <td>{{$thread->created_at}}</td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                     <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
@@ -159,90 +183,5 @@
             });
         });
     </script>
-    <script>
-        $(document).ready(function() {
 
-            function clear_icon() {
-                $('#id_icon').html('');
-                $('#post_title_icon').html('');
-            }
-
-            function fetch_data(page, sort_type, sort_by, query, list_by) {
-                $.ajax({
-                    url: "/thread/fetch_data?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query + "&list_by=" + list_by,
-                    success: function(data) {
-                        $('tbody').html('');
-                        $('tbody').html(data);
-                    }
-                })
-            }
-
-            $(document).on('change', '#tagSelected', function() {
-                var query = $('#departmentSelected').val();
-
-                var list_by = $('#tagSelected').val();
-                var column_name = $('#hidden_column_name').val();
-                var sort_type = $('#hidden_sort_type').val();
-                var page = $('#hidden_page').val();
-                console.log('clicked')
-                fetch_data(page, sort_type, column_name, query, list_by);
-
-            });
-
-
-
-            $(document).on('keyup', '#departmentSelected', function() {
-                var query = $('#departmentSelected').val();
-
-                var list_by = $('#tagSelected').val();
-                var column_name = $('#hidden_column_name').val();
-                var sort_type = $('#hidden_sort_type').val();
-                var page = $('#hidden_page').val();
-                fetch_data(page, sort_type, column_name, query, list_by);
-            });
-
-            $(document).on('click', '.sorting', function() {
-                var column_name = $(this).data('column_name');
-                var order_type = $(this).data('sorting_type');
-                var reverse_order = '';
-                if (order_type == 'asc') {
-                    $(this).data('sorting_type', 'desc');
-                    reverse_order = 'desc';
-                    clear_icon();
-                    $('#' + column_name + '_icon').html('<span class="glyphicon glyphicon-triangle-bottom"></span>');
-                }
-                if (order_type == 'desc') {
-                    $(this).data('sorting_type', 'asc');
-                    reverse_order = 'asc';
-                    clear_icon
-                    $('#' + column_name + '_icon').html('<span class="glyphicon glyphicon-triangle-top"></span>');
-                }
-                $('#hidden_column_name').val(column_name);
-                $('#hidden_sort_type').val(reverse_order);
-                var page = $('#hidden_page').val();
-                var query = $('#departmentSelected').val();
-
-                var list_by = $('#tagSelected').val();
-                fetch_data(page, reverse_order, column_name, query, list_by);
-            });
-
-
-            $(document).on('click', '.pagination a', function(event) {
-                event.preventDefault();
-                var page = $(this).attr('href').split('page=')[1];
-                $('#hidden_page').val(page);
-                var column_name = $('#hidden_column_name').val();
-                var sort_type = $('#hidden_sort_type').val();
-
-                var query = $('#departmentSelected').val();
-
-                var list_by = $('#tagSelected').val();
-
-                $('li').removeClass('active');
-                $(this).parent().addClass('active');
-                fetch_data(page, sort_type, column_name, query,list_by);
-            });
-
-        });
-    </script>
     @endsection

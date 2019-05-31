@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $departments = \App\Department::where('is_deleted','0')->get();
+    return view('welcome',compact('departments'));
 });
 
 
@@ -66,7 +67,7 @@ Route::get('user/search','UserController@search')->name('user.search');
 });
 Route::get('thread', 'ThreadController@index')->name('thread.index');
 Route::get('thread/show/{id}', 'ThreadController@show');
-Route::get('/thread/fetch_data', 'ThreadController@fetch_data')->middleware('auth');
+
 Route::get('thread/{thread}', 'ThreadController@show')->name('thread.show');
 
 //Post per department
@@ -88,6 +89,6 @@ Route::delete('content/delete/{id}','ContentController@destroy')->name('content.
 //admin route function
 
 Route::get('admin','DepartmentController@index')->name('admin');
-
+Route::get('adminz','ThreadController@indexAdmin')->name('indexAdmin');
 
 //

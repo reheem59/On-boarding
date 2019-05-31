@@ -92,69 +92,7 @@
                                         <td>Ernest Fernandez</td>
                                         <td class="text-center">04/17/2019</td>
                                     </tr>
-                                    <tr class="table-default clickable-row" data-href="Thread.html">
-                                        <th scope="row" href="Thread.html">Question Example?</th>
-                                        <td class="text-center">20</td>
-                                        <td class="text-center">12</td>
-                                        <td>Ernest Fernandez</td>
-                                        <td class="text-center">04/17/2019</td>
-                                    </tr>
-                                    <tr class="table-light clickable-row" data-href="Thread.html">
-                                        <th scope="row" href="Thread.html">Question Example?</th>
-                                        <td class="text-center">20</td>
-                                        <td class="text-center">12</td>
-                                        <td>Ernest Fernandez</td>
-                                        <td class="text-center">04/17/2019</td>
-                                    </tr>
-                                    <tr class="table-default clickable-row" data-href="Thread.html">
-                                        <th scope="row" href="Thread.html">Question Example?</th>
-                                        <td class="text-center">20</td>
-                                        <td class="text-center">12</td>
-                                        <td>Ernest Fernandez</td>
-                                        <td class="text-center">04/17/2019</td>
-                                    </tr>
-                                    <tr class="table-light clickable-row" data-href="Thread.html">
-                                        <th scope="row" href="Thread.html">Question Example?</th>
-                                        <td class="text-center">20</td>
-                                        <td class="text-center">12</td>
-                                        <td>Ernest Fernandez</td>
-                                        <td class="text-center">04/17/2019</td>
-                                    </tr>
-                                    <tr class="table-default clickable-row" data-href="Thread.html">
-                                        <th scope="row" href="Thread.html">Question Example?</th>
-                                        <td class="text-center">20</td>
-                                        <td class="text-center">12</td>
-                                        <td>Ernest Fernandez</td>
-                                        <td class="text-center">04/17/2019</td>
-                                    </tr>
-                                    <tr class="table-light clickable-row" data-href="Thread.html">
-                                        <th scope="row" href="Thread.html">Question Example?</th>
-                                        <td class="text-center">20</td>
-                                        <td class="text-center">12</td>
-                                        <td>Ernest Fernandez</td>
-                                        <td class="text-center">04/17/2019</td>
-                                    </tr>
-                                    <tr class="table-default clickable-row" data-href="Thread.html">
-                                        <th scope="row" href="Thread.html">Question Example?</th>
-                                        <td class="text-center">20</td>
-                                        <td class="text-center">12</td>
-                                        <td>Ernest Fernandez</td>
-                                        <td class="text-center">04/17/2019</td>
-                                    </tr>
-                                    <tr class="table-light clickable-row" data-href="Thread.html">
-                                        <th scope="row" href="Thread.html">Question Example?</th>
-                                        <td class="text-center">20</td>
-                                        <td class="text-center">12</td>
-                                        <td>Ernest Fernandez</td>
-                                        <td class="text-center">04/17/2019</td>
-                                    </tr>
-                                    <tr class="table-default clickable-row" data-href="Thread.html">
-                                        <th scope="row" href="Thread.html">Question Example?</th>
-                                        <td class="text-center">20</td>
-                                        <td class="text-center">12</td>
-                                        <td>Ernest Fernandez</td>
-                                        <td class="text-center">04/17/2019</td>
-                                    </tr>
+
                                     </tbody>
                                 </table>
                                 <div class="mx-auto">
